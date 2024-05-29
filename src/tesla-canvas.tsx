@@ -3,7 +3,7 @@ import React, { JSX, Suspense, useEffect, useState } from 'react'
 import { OrbitControls, Stage, useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
 import { Canvas } from '@react-three/fiber'
-import type { BodyColor } from './body-colors'
+import type { CarColor } from './colors'
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -58,10 +58,11 @@ type GLTFResult = GLTF & {
   }
 }
 
-export function Model ({ bodyColor, props } : {bodyColor : BodyColor, props: JSX.IntrinsicElements['group']}) {
+export function Model ({ bodyColor, interiorColor, props } : {bodyColor : CarColor, interiorColor : CarColor, props: JSX.IntrinsicElements['group']}) {
   const { nodes, materials } = useGLTF('/model3full.glb') as GLTFResult
 
   const [bodyMaterial, setBodyMaterial] = useState(materials.carpaint)
+  const [interiorMaterial, setInteriorMaterial] = useState(materials.GlossyInterior)
 
   useEffect(() => {
     const newBodyMaterial = bodyMaterial.clone()
@@ -69,6 +70,12 @@ export function Model ({ bodyColor, props } : {bodyColor : BodyColor, props: JSX
     newBodyMaterial.metalness = 0.3
     setBodyMaterial(newBodyMaterial)
   }, [bodyColor])
+
+  useEffect(() => {
+    const newInteriorMaterial = interiorMaterial.clone()
+    newInteriorMaterial.color.set(interiorColor.color)
+    setInteriorMaterial(newInteriorMaterial)
+  }, [interiorColor])
 
   return (
     <group {...props} dispose={null}>
@@ -160,7 +167,7 @@ export function Model ({ bodyColor, props } : {bodyColor : BodyColor, props: JSX
         castShadow
         receiveShadow
         geometry={nodes.Cube001_14.geometry}
-        material={materials.GlossyInterior}
+        material={interiorMaterial}
       />
       <mesh
         castShadow
@@ -214,13 +221,13 @@ export function Model ({ bodyColor, props } : {bodyColor : BodyColor, props: JSX
   )
 }
 
-function TeslaCanvas ({ bodyColor, props } : {bodyColor : BodyColor, props : React.HTMLAttributes<HTMLDivElement>}) {
+function TeslaCanvas ({ bodyColor, interiorColor, props } : {bodyColor : CarColor, interiorColor : CarColor, props : React.HTMLAttributes<HTMLDivElement>}) {
   return (
     <div {...props}>
       <Suspense>
         <Canvas camera={{ position: [0, 4, 15] }}>
           <Stage>
-            <Model bodyColor={bodyColor} props={{}} />
+            <Model bodyColor={bodyColor} interiorColor={interiorColor} props={{}} />
           </Stage>
           <OrbitControls
             minPolarAngle={0}
