@@ -1,13 +1,13 @@
 import * as THREE from 'three'
 
-export type CarColor = {
+export type CarItem = {
   name: string
   url: string
   color: THREE.Color
   price: number
 }
 
-export const BodyColors : CarColor[] = [
+export const BodyColors : CarItem[] = [
   {
     name: 'Stealth Grey',
     url: 'https://digitalassets.tesla.com/co1n/image/upload/f_auto,q_auto/prod/static_assets/MODEL3_/UI/Paint_StealthGrey.png',
@@ -40,7 +40,7 @@ export const BodyColors : CarColor[] = [
   }
 ]
 
-export const InteriorColors : CarColor[] = [
+export const InteriorColors : CarItem[] = [
   {
     name: 'Black',
     url: 'https://digitalassets.tesla.com/co1n/image/upload/f_auto,q_auto/prod/static_assets/MODEL3/UI/ui_swat_int_in3pb.png',
@@ -51,6 +51,15 @@ export const InteriorColors : CarColor[] = [
     name: 'Black and White',
     url: 'https://digitalassets.tesla.com/co1n/image/upload/f_auto,q_auto/prod/static_assets/MODEL3/UI/ui_swat_int_white.png',
     color: new THREE.Color('white'),
+    price: 0
+  }
+]
+
+export const Wheels : CarItem[] = [
+  {
+    name: '19’’ Nova Wheels',
+    url: 'https://digitalassets.tesla.com/co1n/image/upload/f_auto,q_auto/prod/static_assets/MODEL3_/UI/Wheel-Swatch_19-in.png',
+    color: new THREE.Color(),
     price: 0
   }
 ]

@@ -1,15 +1,15 @@
 import React from 'react'
-import type { CarColor } from './colors'
+import type { CarItem } from './items'
 
-interface ColorSectionProps {
+interface ItemSectionProps {
   title: string,
-  colorSet: CarColor[]
-  selectedColor: CarColor
-  handleBodyColorChange: (color: CarColor) => void
-  setSelectedColor: React.Dispatch<React.SetStateAction<CarColor>>
+  itemSet: CarItem[],
+  selectedItem: CarItem
+  handleItemChange: (color: CarItem) => void
+  setSelectedItem: React.Dispatch<React.SetStateAction<CarItem>>
 }
 
-const ColorSection: React.FC<ColorSectionProps> = ({ title, colorSet, selectedColor, handleBodyColorChange, setSelectedColor }) => {
+const ItemSection: React.FC<ItemSectionProps> = ({ title, itemSet, selectedItem, handleItemChange, setSelectedItem }) => {
   const notSelectedColorStyle = 'rounded-full p-2 max-w-16 hover:outline hover:outline-4 hover:outline-offset-[-4px] hover:outline-blue-600 '
   const selectedColorStyle = 'rounded-full p-2  max-w-16 outline outline-4 outline-offset-[-4px] outline-blue-800'
 
@@ -18,14 +18,14 @@ const ColorSection: React.FC<ColorSectionProps> = ({ title, colorSet, selectedCo
       <h1 className='text-center text-3xl font-semibold font-sans'>{title}</h1>
 
       <menu className='flex flex-row items-center justify-center py-3'>
-        {colorSet.map((color, index) => (
+        {itemSet.map((color, index) => (
           <li key={`li-${index}`}>
             <button
               key={`color-${index}`}
-              className={selectedColor.name === color.name ? selectedColorStyle : notSelectedColorStyle}
+              className={selectedItem.name === color.name ? selectedColorStyle : notSelectedColorStyle}
               onClick={() => {
-                handleBodyColorChange(color)
-                setSelectedColor(color)
+                handleItemChange(color)
+                setSelectedItem(color)
               }}
             >
               <img src={color.url} alt={color.name} />
@@ -35,10 +35,10 @@ const ColorSection: React.FC<ColorSectionProps> = ({ title, colorSet, selectedCo
       </menu>
 
       <p className='text-center pt-3'>
-        <strong>{selectedColor.name}</strong> {selectedColor.price > 0 ? `$${selectedColor.price.toLocaleString()}` : 'Included'}
+        <strong>{selectedItem.name}</strong> {selectedItem.price > 0 ? `$${selectedItem.price.toLocaleString()}` : 'Included'}
       </p>
     </section>
   )
 }
 
-export default ColorSection
+export default ItemSection

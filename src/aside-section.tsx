@@ -1,6 +1,7 @@
 import React from 'react'
-import type { CarColor } from './colors'
-import ColorSection from './color-section'
+import { Wheels } from './items'
+import type { CarItem } from './items'
+import ItemSection from './item-section'
 
 function AsideSection ({
   bodyColors,
@@ -9,31 +10,43 @@ function AsideSection ({
   handleInteriorColorChange,
   props
 }: {
-  bodyColors: CarColor[],
-  interiorColors: CarColor[],
-  handleBodyColorChange: (color: CarColor) => void,
-  handleInteriorColorChange: (color: CarColor) => void,
+  bodyColors: CarItem[],
+  interiorColors: CarItem[],
+  handleBodyColorChange: (color: CarItem) => void,
+  handleInteriorColorChange: (color: CarItem) => void,
   props: React.HTMLAttributes<HTMLElement>
 }) {
-  const [selectedBodyColor, setSelectedBodyColor] = React.useState<CarColor>(bodyColors[0])
-  const [selectedInteriorColor, setSelectedInteriorColor] = React.useState<CarColor>(interiorColors[0])
+  const [selectedBodyColor, setSelectedBodyColor] = React.useState<CarItem>(bodyColors[0])
+  const [selectedInteriorColor, setSelectedInteriorColor] = React.useState<CarItem>(interiorColors[0])
+  const [selectedWheel, setSelectedWheel] = React.useState<CarItem>(Wheels[0])
 
   return (
     <aside {...props}>
-      <ColorSection
+      <ItemSection
         title='Paint'
-        colorSet={bodyColors}
-        selectedColor={selectedBodyColor}
-        handleBodyColorChange={handleBodyColorChange}
-        setSelectedColor={setSelectedBodyColor}
+        itemSet={bodyColors}
+        selectedItem={selectedBodyColor}
+        handleItemChange={handleBodyColorChange}
+        setSelectedItem={setSelectedBodyColor}
       />
-      <ColorSection
+
+      {/* This section is just a placeholder for future development */}
+      <ItemSection
+        title='Wheels'
+        itemSet={Wheels}
+        selectedItem={selectedWheel}
+        handleItemChange={() => {}}
+        setSelectedItem={setSelectedWheel}
+      />
+
+      <ItemSection
         title='Interior'
-        colorSet={interiorColors}
-        selectedColor={selectedInteriorColor}
-        handleBodyColorChange={handleInteriorColorChange}
-        setSelectedColor={setSelectedInteriorColor}
+        itemSet={interiorColors}
+        selectedItem={selectedInteriorColor}
+        handleItemChange={handleInteriorColorChange}
+        setSelectedItem={setSelectedInteriorColor}
       />
+
     </aside>
   )
 }

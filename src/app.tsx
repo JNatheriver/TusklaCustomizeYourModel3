@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import TeslaCanvas from './tesla-canvas'
 import AsideSection from './aside-section'
-import { BodyColors, InteriorColors } from './colors'
-import type { CarColor } from './colors'
+import { BodyColors, InteriorColors } from './items'
+import type { CarItem } from './items'
 
 export default function App () {
-  const [bodyColor, setBodyColor] = useState<CarColor>(BodyColors[0])
-  const [interiorColor, setInteriorColor] = useState<CarColor>(InteriorColors[0])
-  const handleBodyColorChange = (color : CarColor) => setBodyColor(color)
-  const handleInteriorColorChange = (color : CarColor) => setInteriorColor(color)
+  const [bodyColor, setBodyColor] = useState<CarItem>(BodyColors[0])
+  const [interiorColor, setInteriorColor] = useState<CarItem>(InteriorColors[0])
+  const handleBodyColorChange = (color : CarItem) => setBodyColor(color)
+  const handleInteriorColorChange = (color : CarItem) => setInteriorColor(color)
 
   return (
     <>

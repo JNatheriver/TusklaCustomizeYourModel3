@@ -3,7 +3,7 @@ import React, { JSX, Suspense, useEffect, useState } from 'react'
 import { OrbitControls, Stage, useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
 import { Canvas } from '@react-three/fiber'
-import type { CarColor } from './colors'
+import type { CarItem } from './items'
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -58,7 +58,7 @@ type GLTFResult = GLTF & {
   }
 }
 
-export function Model ({ bodyColor, interiorColor, props } : {bodyColor : CarColor, interiorColor : CarColor, props: JSX.IntrinsicElements['group']}) {
+export function Model ({ bodyColor, interiorColor, props } : {bodyColor : CarItem, interiorColor : CarItem, props: JSX.IntrinsicElements['group']}) {
   const { nodes, materials } = useGLTF('/model3full.glb') as GLTFResult
 
   const [bodyMaterial, setBodyMaterial] = useState(materials.carpaint)
@@ -221,7 +221,7 @@ export function Model ({ bodyColor, interiorColor, props } : {bodyColor : CarCol
   )
 }
 
-function TeslaCanvas ({ bodyColor, interiorColor, props } : {bodyColor : CarColor, interiorColor : CarColor, props : React.HTMLAttributes<HTMLDivElement>}) {
+function TeslaCanvas ({ bodyColor, interiorColor, props } : {bodyColor : CarItem, interiorColor : CarItem, props : React.HTMLAttributes<HTMLDivElement>}) {
   return (
     <div {...props}>
       <Suspense>
