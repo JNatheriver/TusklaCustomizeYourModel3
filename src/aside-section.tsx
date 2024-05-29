@@ -22,6 +22,10 @@ function AsideSection ({
 
   return (
     <aside {...props}>
+      <section className='flex flex-col items-center justify-center h-full w-full pt-28'>
+        <h1 className='text-5xl font-semibold font-sans'>Model 3</h1>
+
+      </section>
       <ItemSection
         title='Paint'
         itemSet={bodyColors}

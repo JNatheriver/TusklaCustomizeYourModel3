@@ -18,7 +18,7 @@ export default function App () {
         interiorColors={InteriorColors}
         handleBodyColorChange={handleBodyColorChange}
         handleInteriorColorChange={handleInteriorColorChange}
-        props={{ className: 'flex flex-col w-[28.5%] h-full gap-32' }}
+        props={{ className: 'flex flex-col w-[28.5%] h-full gap-32 overflow-y-scroll no-scrollbar' }}
       />
     </>
   )
