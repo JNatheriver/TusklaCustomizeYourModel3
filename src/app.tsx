@@ -12,6 +12,9 @@ export default function App () {
 
   return (
     <>
+      <header className='fixed flex z-10 w-full h-14 items-center justify-between backdrop-blur bg-white/80'>
+        <h1 className='text-xl font-semibold font-tesla pl-12'>TUSKLA</h1>
+      </header>
       <TeslaCanvas bodyColor={bodyColor} interiorColor={interiorColor} props={{ className: 'flex w-[71.5%] h-full' }} />
       <AsideSection
         bodyColors={BodyColors}

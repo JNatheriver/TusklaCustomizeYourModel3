@@ -224,8 +224,8 @@ export function Model ({ bodyColor, interiorColor, props } : {bodyColor : CarIte
 function TeslaCanvas ({ bodyColor, interiorColor, props } : {bodyColor : CarItem, interiorColor : CarItem, props : React.HTMLAttributes<HTMLDivElement>}) {
   return (
     <div {...props}>
-      <Suspense>
-        <Canvas camera={{ position: [0, 4, 15] }}>
+      <Suspense fallback={<iframe src='https://gifer.com/embed/ZKZg' width={480} height={485.053} allowFullScreen />}>
+        <Canvas camera={{ position: [15, 4, 15] }}>
           <Stage>
             <Model bodyColor={bodyColor} interiorColor={interiorColor} props={{}} />
           </Stage>

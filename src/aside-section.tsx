@@ -2,6 +2,9 @@ import React from 'react'
 import { Wheels } from './items'
 import type { CarItem } from './items'
 import ItemSection from './item-section'
+import { Upgrades } from './tesla-upgrades'
+import type { UpgradeType, PaymentType } from './tesla-upgrades'
+import { ConfigSection } from './config-section'
 
 function AsideSection ({
   bodyColors,
@@ -19,13 +22,19 @@ function AsideSection ({
   const [selectedBodyColor, setSelectedBodyColor] = React.useState<CarItem>(bodyColors[0])
   const [selectedInteriorColor, setSelectedInteriorColor] = React.useState<CarItem>(interiorColors[0])
   const [selectedWheel, setSelectedWheel] = React.useState<CarItem>(Wheels[0])
+  const [selectedUpgrade, setSelectedUpgrade] = React.useState<UpgradeType>('Rear-Wheel Drive')
+  const [selectedPaymentType, setSelectedPaymentType] = React.useState<PaymentType>('cash')
 
   return (
     <aside {...props}>
-      <section className='flex flex-col items-center justify-center h-full w-full pt-28'>
-        <h1 className='text-5xl font-semibold font-sans'>Model 3</h1>
-
-      </section>
+      <ConfigSection
+        title='Model 3'
+        upgrades={Upgrades}
+        selectedUpgrade={selectedUpgrade}
+        selectedPaymentType={selectedPaymentType}
+        handlePaymentTypeChange={setSelectedPaymentType}
+        handleSelectedUpgradeChange={setSelectedUpgrade}
+      />
       <ItemSection
         title='Paint'
         itemSet={bodyColors}
