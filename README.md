@@ -30,30 +30,30 @@ Welcome to **Tuskla**, a unique 3D car customization experience inspired by the 
   
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT [License](https://github.com/JNatheriver/TusklaCustomizeYourModel3/blob/master/LICENSE).
 
 ## Installation and Setup
 
 To run this project locally, follow these steps:
 
 1. **Clone the repository**:
-   git clone https://github.com/your-username/tuskla.git
-   cd tuskla
+    - git clone https://github.com/JNatheriver/TusklaCustomizeYourModel3.git
+    - cd tuskla
 
 2. **Install dependencies**:
-    npm install
+    - npm install
 
 3. **Run the development server**
-    npm run dev
+    - npm run dev
 
-4. **Open your browser and navigate to http://localhost:3000 to see the application in action.** 
+4. **Open your browser and navigate to localhost to see the application in action.** 
 
 ## Deployment
-This project is deployed on Vercel. You can view the live version here.
+This project is deployed on Vercel. You can view the live version [here](https://tuskla-customize-your-model3.vercel.app/).
 
 ## Contributing
 Contributions are welcome! If you have suggestions for improvements or new features, feel free to open an issue or create a pull request.
 
 ## Enjoy customizing your Tuskla car!
 
-Note: Tuskla is a fictional project inspired by Tesla and the Rick and Morty series. This project is for demonstration purposes only and is not affiliated with Tesla, Inc.
+Note: Tuskla is a fictional project inspired by Tesla. This project is for demonstration purposes only and is not affiliated with Tesla, Inc.
